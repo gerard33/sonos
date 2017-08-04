@@ -59,7 +59,7 @@ Make sure you enter all the required fields.
 | Icon | You can choose between the standard Sonos icon or the icon of a Sonos 1 or Sonos 5 |
 | Notifications | Set to True if you want to be able to play mp3 files on your Sonos which can be triggered with the Domoticz notification function |
 | Notifications folder | This is the folder where the mp3 files are stored which can be used with the Notifications function. |
-| | Prefered method is to make a folder 'notifications' in the www folder of Domoticz. This makes sure the plugin can check if the file exists and also the Sonos is able to play this file without setting any permissions. |
+| | Prefered method is to make a folder 'notifications' in the www folder of Domoticz and place the mp3 files in there. This makes sure the plugin can check if the file exists and also the Sonos is able to play this file without setting any permissions. Also this folder will stay untouched after a Domoticz update. |
 | | Example (always start with 'http://'): **http://<i></i>192.168.1.170:8080/notifications** |
 | | Other method is to use a path to a network share on which the mp3 files are available. When you do this, make sure you have added this folder to the Sonos Library using this [link](https://sonos.custhelp.com/app/answers/detail/a_id/261/~/adding-and-updating-your-music-library). |
 | | Example (always start with '//'): **//nas/music/notifications** |
