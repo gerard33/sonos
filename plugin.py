@@ -21,7 +21,7 @@
                 <option label="False" value="False" default="true" />
             </options>
         </param>
-        <param field="Mode4" label="Notification folder" width="400px" required="true" default="//shared_folder_with_mp3"/>
+        <param field="Mode4" label="Notification folder" width="400px" required="true" default="http://<domoticz_ip>:8080/notifications"/>
         <param field="Mode5" label="Refresh radio list" width="100px">
             <options>
                 <option label="True" value="Refresh"/>
