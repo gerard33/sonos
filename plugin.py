@@ -4,7 +4,7 @@
 #           Current author:     G3rard, 2017
 #
 """
-<plugin key="Sonos" name="Sonos Players" author="G3rard" version="0.9" wikilink="https://github.com/gerard33/sonos" externallink="https://sonos.com/">
+<plugin key="Sonos" name="Sonos Players" author="G3rard" version="0.91" wikilink="https://github.com/gerard33/sonos" externallink="https://sonos.com/">
     <params>
         <param field="Address" label="IP Address" width="200px" required="true" default="192.168.1.161"/>
         <param field="Mode1" label="Update interval (sec)" width="100px" required="true" default="30"/>
@@ -324,8 +324,12 @@ class BasePlugin:
 
     # Execution depend of Domoticz.Heartbeat(x) x in seconds
     def onHeartbeat(self):
-        # Check if Sonos is on
-        self.sonos_GetTransportInfo()
+        # Check if Sonos is on and available
+        try:
+            self.sonos_GetTransportInfo()
+        except Exception as err:
+            Domoticz.Error("Sonos not available (" +  str(err) + ")")
+            return
         # Don't update mediainfo if player is stopped
         if self.playerState == 1:
             self.sonos_GetPositionInfo()
@@ -392,7 +396,7 @@ class BasePlugin:
                 if CurrentTransportState  == 'PAUSED_PLAYBACK':
                     self.playerState = 2
                     self.mediaDescription = 'Paused'
-                    UpdateDevice(1, 1, self.mediaDescription)
+                    UpdateDevice(1, self.playerState, self.mediaDescription)
                 if CurrentTransportState  == 'STOPPED':
                     self.playerState = 0
                     self.mediaDescription = 'Off'
