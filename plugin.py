@@ -693,7 +693,7 @@ def UpdateDevice(Unit, nValue, sValue, AlwaysUpdate=False):
     # Make sure that the Domoticz device still exists (they can be deleted) before updating it 
     if Unit in Devices:
         if Devices[Unit].nValue != nValue or Devices[Unit].sValue != sValue or AlwaysUpdate == True:
-            Devices[Unit].Update(nValue, str(sValue))
+            Devices[Unit].Update(nValue=nValue, sValue=str(sValue))
             Domoticz.Log("Update " + Devices[Unit].Name + ": " + str(nValue) + " - '" + str(sValue) + "'")
     return
 
